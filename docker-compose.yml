@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./settings/settings-1.yml:/etc/searxng/settings.yml  # Mount first settings.yml
+      - ./settings/settings-2.yml:/usr/local/searxng/searx/settings.yml  # Mount second settings.yml
+    restart: always
